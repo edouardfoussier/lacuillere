@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h2 class="text-center"><%= @restaurant.name %></h2>
+
+      <ul class="list-unstyled text-center">
+        <li><%= @restaurant.category %></li>
+        <li><%= @restaurant.address %></li>
+        <li><%= @restaurant.phone_number %></li>
+      </ul>
+
+      <hr>
+
+      <h3>Reviews</h3>
+      <% @restaurant.reviews.each do |review| %>
+      <ul class="list-inline">
+      <li>Rating : <strong> <%='*' * review.rating %></strong></li>
+        <li>Avis: "<em><%= review.content.capitalize %>.</em> "</li>
+        <li>Créé le <%= review.created_at.strftime("%d.%m.%y") %></li>
+      </ul>
+      <% end %>
+
+      <hr>
+
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, collection: 0..5, prompt: "Nb of stars" %>
+      <%= f.button :submit, class: "btn btn-primary btn-block" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

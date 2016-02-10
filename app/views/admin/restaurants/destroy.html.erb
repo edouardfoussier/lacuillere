@@ -1,0 +1,6 @@
+<%= link_to "Delete", restaurant_path(@restaurant),
+      method: :delete,
+      data: { confirm: "Are you sure?" } do %>
+      <i class="fa fa-trash"></i>
+      <% end %>
+

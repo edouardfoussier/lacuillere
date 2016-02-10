@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <ul class="list-inline">
+    <li><h1 class="text-center">My Restaurants</h1></li>
+     <li><p class="text-center">(Admin view)</p></li>
+    </ul>
+
+      <% @restaurants.each do |restaurant| %>
+      <ul class="list-inline">
+        <li><h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3></li>
+        <li><%= link_to admin_restaurant_path(restaurant),
+      method: :delete,
+      data: { confirm: "Do you really want to delete this restaurant?" } do %>
+      <i class="fa fa-trash"></i>
+      <% end %>
+      </li>
+      </ul>
+<ul class="list-unstyled">
+        <li><%= restaurant.category %></li>
+        <li><%= restaurant.address %></li>
+        <li><%= restaurant.phone_number %></li>
+
+      </ul>
+      <%end%>
+
+    </div>
+  </div>
+</div>
